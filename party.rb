@@ -8,6 +8,10 @@ class Party
     @alive << member
   end
 
+  def weapon(member)
+     weapon = Party.instance_variable_get(:@alive).member.instance_variable_get(:@weapon)
+   end
+
   def any?
     @alive.any?
     # should return true if the party has surviving members
@@ -39,14 +43,16 @@ class HeroParty < Party
     # sending message to user, asking which monster to attack
     puts opposing_party
     puts "Which monster do you want to attack"
-    target = gets.chomp
+    request = gets.chomp
+    target = opposing_party
   end
 end
 
 class MonsterParty < Party
   def attack(opposing_party)
+
     # randomly choose a member of the opposing_party and attack it
-    target = opposing_party.sample
+    target = opposing_party.instance_variable_get(:@alive).sample
 
   end
 

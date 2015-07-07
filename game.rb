@@ -143,7 +143,7 @@ end
    attacker = current_fighters.shift
    attackee = current_fighters.shift
   
-   while attackee.is_alive?
+   while attackee.any?
      attacker.attack(attackee)
   
      puts "#{attacker} attacks #{attackee} with his #{attacker.weapon} for #{attacker.weapon.damage}.  #{attackee} now has #{attackee.current_hp} HP left."
